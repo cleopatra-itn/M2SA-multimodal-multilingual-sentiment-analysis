@@ -1,0 +1,1 @@
+DATA_FOLDER_PREFIX= "data/final_dataset/"
