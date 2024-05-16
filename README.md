@@ -282,9 +282,4 @@ do
 
 done
 
-```
-## Citation
-<!-- If you find the data or the code useful, cite us:
-``` -->
-```
 
