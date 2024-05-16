@@ -9,13 +9,11 @@ Gaurish Thakkar, Sherzod Hakimov and Marko Tadić. 2024.
 The 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino (Italia)
 
 ```
-## Publication
+
 - [Paper](https://arxiv.org/abs/2404.01753)
-- [Dataset]() with tweetid and label 
+- [Dataset](data/) with tweetid and label 
 - Models [multimodal](https://huggingface.co/FFZG-cleopatra/M2SA), [text-only](https://huggingface.co/FFZG-cleopatra/M2SA-text-only)
 - Demo [multimodal](https://huggingface.co/spaces/thak123/M2SA-demo-multimodal), [text-only](https://huggingface.co/spaces/FFZG-cleopatra/M2SA-demo-text-only)
-
-## Dataset
 
 For access to images and tweets, send an email with organization (university/institute) and purpose/usage details to gthakkar@m.ffzg.hr
 
