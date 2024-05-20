@@ -41,11 +41,6 @@ python twitter_curation/translation.py
 
 ## Training
 
-0. Run the following command to create vision text dual encoder model (clip-mbert)
-
-```
-python src_VTDM/prepare.py
-```
 1.1 To train model with DINOv2 and mBERT run
 
 ```
