@@ -13,7 +13,7 @@ The 2024 Joint International Conference on Computational Linguistics, Language R
 - [Paper](https://arxiv.org/abs/2404.01753)
 - [Dataset](final_dataset.zip) with tweetid and label only
 - Models [multimodal](https://huggingface.co/FFZG-cleopatra/M2SA), [text-only](https://huggingface.co/FFZG-cleopatra/M2SA-text-only)
-- Demo [multimodal](https://huggingface.co/spaces/thak123/M2SA-demo-multimodal), [text-only](https://huggingface.co/spaces/FFZG-cleopatra/M2SA-demo-text-only)
+- Demo [multimodal](https://huggingface.co/spaces/FFZG-cleopatra/M2SA-demo-multimodal), [text-only](https://huggingface.co/spaces/FFZG-cleopatra/M2SA-demo-text-only)
 
 For access to images and tweets, send an email with organization (university/institute) and purpose/usage details to gthakkar@m.ffzg.hr
 
