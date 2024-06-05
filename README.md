@@ -282,6 +282,98 @@ do
 done
 
 ```
+
+## Usage
+### Unimodal Multilingual Model
+To use the model use the following script. Kindly set the ***device*** based on availability of the GPU.
+
+```
+from transformers import (pipeline)
+analyzer = pipeline(
+    "sentiment-analysis", model="FFZG-cleopatra/M2SA-text-only"
+)
+input_text = "I feel amazing today."
+print(analyzer(input_text)[0]["label"])
+
+```
+
+### Multimodal Multilingual Model
+To use the model use the following script. 
+Kindly refer to the [app.py](https://huggingface.co/spaces/FFZG-cleopatra/M2SA-demo-multimodal/blob/main/app.py) or for the Transform and VisionTextDualEncoderModel class definitions.
+
+```
+import torch
+import torch.nn as nn
+
+import torchvision
+from torchvision.transforms import CenterCrop, ConvertImageDtype, Normalize, Resize
+from torchvision.transforms.functional import InterpolationMode
+from torchvision import transforms
+from torchvision.io import ImageReadMode, read_image
+
+
+from transformers import CLIPModel, AutoModel
+from huggingface_hub import hf_hub_download
+from safetensors.torch import load_model
+
+from datasets import load_dataset, load_metric
+from transformers import (
+    AutoConfig,
+AutoImageProcessor,
+    AutoModelForSequenceClassification,
+    AutoTokenizer,
+    logging,
+)
+
+id2label = {0: "negative", 1: "neutral", 2: "positive"}
+label2id = {"negative": 0, "neutral": 1, "positive": 2}
+
+tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-xlm-roberta-base-sentiment-multilingual")
+
+model = VisionTextDualEncoderModel(num_classes=3)
+config = model.vision_encoder.config
+
+# https://huggingface.co/FFZG-cleopatra/M2SA/blob/main/model.safetensors
+sf_filename = hf_hub_download("FFZG-cleopatra/M2SA", filename="model.safetensors")
+
+load_model(model, sf_filename) 
+image_processor = AutoImageProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+def predict_sentiment(text, image):
+    # read the image file   
+    image = read_image(image, mode=ImageReadMode.RGB)
+       
+    text_inputs = tokenizer(
+            text,
+            max_length=512,
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt"
+        )
+    
+    image_transformations = Transform(
+        config.vision_config.image_size,
+        image_processor.image_mean,
+        image_processor.image_std,
+    )
+    image_transformations = torch.jit.script(image_transformations)
+    pixel_values = image_transformations(image)
+    text_inputs["pixel_values"] = pixel_values.unsqueeze(0)
+   
+    prediction = None
+    with torch.no_grad():
+        outputs = model(**text_inputs)
+        print(outputs)
+        prediction = np.argmax(outputs["logits"], axis=-1)
+        print(id2label[prediction[0].item()])
+    return id2label[prediction[0].item()]
+
+text = "I feel good today"
+image = "link-to-image"
+predict_sentiment(text, image)
+```
+
+
 ## Citation
 If you find the resources or the code useful, please cite us:
 ```
