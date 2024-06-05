@@ -281,4 +281,29 @@ do
 
 done
 
+```
+## Citation
+If you find the resources or the code useful, please cite us:
+```
+@inproceedings{thakkar-etal-2024-m2sa-multimodal,
+    title = "{M}2{SA}: Multimodal and Multilingual Model for Sentiment Analysis of Tweets",
+    author = "Thakkar, Gaurish  and
+      Hakimov, Sherzod  and
+      Tadi{\'c}, Marko",
+    editor = "Calzolari, Nicoletta  and
+      Kan, Min-Yen  and
+      Hoste, Veronique  and
+      Lenci, Alessandro  and
+      Sakti, Sakriani  and
+      Xue, Nianwen",
+    booktitle = "Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)",
+    month = may,
+    year = "2024",
+    address = "Torino, Italia",
+    publisher = "ELRA and ICCL",
+    url = "https://aclanthology.org/2024.lrec-main.946",
+    pages = "10833--10845",
+    abstract = "In recent years, multimodal natural language processing, aimed at learning from diverse data types, has garnered significant attention. However, there needs to be more clarity when it comes to analysing multimodal tasks in multi-lingual contexts. While prior studies on sentiment analysis of tweets have predominantly focused on the English language, this paper addresses this gap by transforming an existing textual Twitter sentiment dataset into a multimodal format through a straightforward curation process. Our work opens up new avenues for sentiment-related research within the research community. Additionally, we conduct baseline experiments utilising this augmented dataset and report the findings. Notably, our evaluations reveal that when comparing unimodal and multimodal configurations, using a sentiment-tuned large language model as a text encoder performs exceptionally well.",
+}
+```
 
